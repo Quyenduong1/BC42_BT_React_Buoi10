@@ -1,11 +1,22 @@
-import React from 'react'
+import React, {useState , useEffect} from 'react'
+import axios from 'axios'
 import Header from './Header'
+import './index.scss'
+import SeatList from './SeatList';
+
+
 
 function MovieSeat() {
+    const [select, setSelect] = useState([]);
   return (
-    <div className='container-fluid'>
+    <div className='container'>
         <Header/>
-        <h1>MovieSeat</h1>
+
+        <div className='pt'>
+          <SeatList  />
+        </div>
+        
+        
     </div>
   )
 }
