@@ -16,7 +16,19 @@ function SeatList() {
   const [searchTerm, setSearchTerm] = useState('');
   const {data = [],loading,error} = useAPI(fechData, {depedencies:[searchTerm]});
 
+   
+  const [selectedSeats, setSelectedSeats] = useState([]);
+  const handleSeatClick = (evt) => {
+    const { soGhe } = evt;
+    const seatIndex = selectedSeats.findIndex(seat => seat.soGhe === soGhe);
 
+    if (seatIndex === -1) {
+      setSelectedSeats([...selectedSeats, evt]);
+    } else {
+      selectedSeats.splice(seatIndex, 1);
+      setSelectedSeats([...selectedSeats]);
+    }
+  };
 
 
     return (
@@ -26,10 +38,13 @@ function SeatList() {
                 return (
                     <tr  key={item.hang}>
                         <td className='ghe title-1 '>{item.hang}</td>
-                        {item.danhSachGhe.map((evt)=> {
+                        {item.danhSachGhe.map((evt) => {
                             return (
                                 <td className='ghe text-center' key={evt.soGhe}>
-                                    <button style={{backgroundColor: evt.daDat && 'orange' }} onClick={() => {}} className='btn title-1'>{evt.soGhe}</button>
+                                    <button style={{
+                                        backgroundColor: selectedSeats.includes(evt) ? 'green' : evt.daDat ? 'orange' : ''
+                                    }}
+                                        onClick={() => handleSeatClick(evt)} className='btn title-1'>{evt.soGhe}</button>
                                 </td>
                             )
                         })}
