@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import axios from 'axios'
 import useAPI from './useAPI';
 import './index.scss'
@@ -15,6 +16,9 @@ function SeatList() {
   const [searchTerm, setSearchTerm] = useState('');
   const {data = [],loading,error} = useAPI(fechData, {depedencies:[searchTerm]});
 
+
+
+
     return (
       <table className='title-1' >
         <tbody>
@@ -25,7 +29,7 @@ function SeatList() {
                         {item.danhSachGhe.map((evt)=> {
                             return (
                                 <td className='ghe text-center' key={evt.soGhe}>
-                                    <button className='btn title-1'>{evt.soGhe}</button>
+                                    <button style={{backgroundColor: evt.daDat && 'orange' }} onClick={() => {}} className='btn title-1'>{evt.soGhe}</button>
                                 </td>
                             )
                         })}

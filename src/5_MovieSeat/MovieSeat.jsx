@@ -3,7 +3,7 @@ import axios from 'axios'
 import Header from './Header'
 import './index.scss'
 import SeatList from './SeatList';
-
+import TablePrice from './TablePrice';
 
 
 function MovieSeat() {
@@ -12,12 +12,14 @@ function MovieSeat() {
     <div className='container'>
         <Header/>
 
-        <div className='pt'>
+        <div className='pt d-flex justify-content-around'>
           <SeatList  />
+
+          <TablePrice />
         </div>
         
         
-    </div>
+    </div>  
   )
 }
 
